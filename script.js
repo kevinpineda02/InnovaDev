@@ -116,116 +116,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Logging inicial
     console.log('Sistema de optimización de videos iniciado');
     console.log('Todos los videos se reproducirán solo cuando sean visibles');
-
-    // Control del botón de chat flotante
-    const chatButton = document.getElementById('chat-button');
-    if (chatButton && containerPrincipal) {
-        // Observer solo para el contenedor principal (para ocultar el botón)
-        const chatControlObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Está en el contenedor principal, ocultar botón
-                    chatButton.classList.remove('visible', 'animate-in');
-                    chatButton.classList.add('hidden');
-                    console.log('Botón de chat ocultado - en contenedor principal');
-                } else {
-                    // No está en el contenedor principal, mostrar botón
-                    chatButton.classList.remove('hidden');
-                    chatButton.classList.add('visible', 'animate-in');
-                    console.log('Botón de chat mostrado - fuera del contenedor principal');
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: '0px 0px 0px 0px', // Sin margen para detección precisa
-            threshold: 0.1 // Solo necesita 10% del contenedor principal visible
-        });
-
-        // Observar solo el contenedor principal
-        chatControlObserver.observe(containerPrincipal);
-
-        // Evento click del botón de chat
-        chatButton.addEventListener('click', function() {
-            // Aquí puedes agregar la funcionalidad del chat
-            alert('¡Función de chat próximamente! 💬\n\nEste sería el lugar donde se abriría el sistema de chat o IA.');
-            console.log('Botón de chat clickeado');
-        });
-    }
 });
+
+// Función para el menú hamburguesa
+function toggleMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger-menu');
+    
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+}
+
+// Cerrar menú al hacer clic en un enlace (para mejor UX en móviles)
 document.addEventListener('DOMContentLoaded', function() {
-    const videoDemo = document.querySelector('.video-demo');
-    const backgroundVideo = document.querySelector('.background-video');
-    const containerSecundario = document.querySelector('.container-secundario');
-    const containerPrincipal = document.querySelector('.container-principal');
-
-    // Configuración común del observer
-    const observerOptions = {
-        root: null, // viewport
-        rootMargin: '-10% 0px -10% 0px', // Activar cuando el 80% de la sección esté visible
-        threshold: 0.2 // Activar cuando al menos 20% esté visible
-    };
-
-    // Función para controlar video demostrativo
-    if (videoDemo && containerSecundario) {
-        const demoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    videoDemo.play().catch(error => {
-                        console.log('Error al reproducir video demostrativo:', error);
-                    });
-                    console.log('Video demostrativo iniciado');
-                } else {
-                    videoDemo.pause();
-                    console.log('Video demostrativo pausado');
-                }
-            });
-        }, observerOptions);
-
-        demoObserver.observe(containerSecundario);
-
-        // Eventos del video demostrativo
-        videoDemo.addEventListener('loadeddata', function() {
-            console.log('Video demostrativo cargado y listo');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger-menu');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
         });
-
-        videoDemo.addEventListener('error', function(e) {
-            console.error('Error en video demostrativo:', e);
-        });
-    }
-
-    // Función para controlar video de fondo (optimización cuando no está visible)
-    if (backgroundVideo && containerPrincipal) {
-        const backgroundObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // La sección está visible, asegurar reproducción
-                    if (backgroundVideo.paused) {
-                        backgroundVideo.play().catch(error => {
-                            console.log('Error al reanudar video de fondo:', error);
-                        });
-                        console.log('Video de fondo reanudado por scroll');
-                    }
-                } else {
-                    // La sección no está visible, pausar para optimizar
-                    backgroundVideo.pause();
-                    console.log('Video de fondo pausado por optimización');
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: '0px 0px -80% 0px', // Pausar solo cuando esté muy fuera del viewport
-            threshold: 0.1
-        });
-
-        backgroundObserver.observe(containerPrincipal);
-
-        // Eventos del video de fondo
-        backgroundVideo.addEventListener('loadeddata', function() {
-            console.log('Video de fondo cargado y listo');
-        });
-
-        backgroundVideo.addEventListener('error', function(e) {
-            console.error('Error en video de fondo:', e);
-        });
-    }
+    });
+    
+    // Cerrar menú al hacer clic fuera de él
+    document.addEventListener('click', function(event) {
+        const isClickInsideNav = navMenu.contains(event.target);
+        const isClickOnHamburger = hamburger.contains(event.target);
+        
+        if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    });
 });

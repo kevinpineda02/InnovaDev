@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prototipo</title>
+    <title>InnovaDevs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="/Logo/logo.ico">
+    <link rel="icon" type="image/png" href="/Logo/innovaDevs.png">
 </head>
 <body>
     <!--Contenedor De la pagina-->
@@ -16,18 +16,27 @@
         <!--Encabezado de la pagina-->
         <div class="encabezado">
             <div class="brand-container">
+                <img class="logo" src="/Logo/innovaDevs.png" alt="Logo de InnovaDevs">
                 <h2>InnovaDevs</h2>
-                <img class="logo" src="/Logo/logo.png" alt="Logo de InnovaDevs">
             </div>
-            <nav>
-                <a href="#">Inicio</a>
-                <a href="#">¿Quienes somos?</a>
-                <a href="#">Servicios</a>
-                <a href="#">Contacto</a>
+            
+            <!-- Botón hamburguesa para móviles -->
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Navegación -->
+            <nav class="nav-menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#quienes-somos">¿Quienes somos?</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto">Contacto</a>
             </nav>
         </div>
         <!--Contenedor Principal-->
-        <div class="container-principal">
+        <div id="inicio" class="container-principal">
             <!--Video de fondo-->
             <video class="background-video" loop muted preload="metadata">
                 <source src="/fondos/Fondo3.mp4" type="video/mp4">
@@ -46,7 +55,7 @@
         </div>
 
         <!--Contenedor Secundario-->
-        <div class="container-secundario">
+        <div id="quienes-somos" class="container-secundario">
             <!--Contenido de la pagina que presenta el proyecto y equipo-->
             <div class="informacion">
                 <h3>¿Qué es InnovaDevs?</h3>
@@ -66,7 +75,7 @@
         </div>
 
             <!--Tarjetas de informacion donde hablan-->
-            <div class="container-terciario">
+            <div id="servicios" class="container-terciario">
                 <h2>¿Que ofrecemos?</h2>
                 <div class="cards-container">
                     <div class="card">
@@ -107,7 +116,7 @@
             <!--Tarjeta De Kevin Pineda-->
             <div class="cards-presentacion">
                 <div class="circulo">
-                    <img src="/Equipo/Yo CV.jpg" alt="Kevin Pineda" width="100" height="100">
+                    <img src="/Equipo/yoSaco.png" alt="Kevin Pineda" width="100" height="100">
                 </div>
                 <!--Contenido de la tarjetas-->
                 <div class="card-content">
@@ -128,7 +137,7 @@
             </div>
             <div class="cards-presentacion">
                 <div class="circulo">
-                    <img src="/Equipo/Fernando.jpg" alt="Fernando Guevara" width="100" height="100">
+                    <img src="/Equipo/Fernando.png" alt="Fernando Guevara" width="100" height="100">
                 </div>
                 
                 <!--Contenido de la tarjetas-->
@@ -148,16 +157,17 @@
                     </div>
                 </div>
             </div>
+
             <!--Tarjeta De Jose Victor-->
             <div class="cards-presentacion">
                 <div class="circulo">
-                    <img src="/Equipo/Jose.jpg" alt="Jose Rodriguez" width="100" height="100">
+                    <img src="/Equipo/Jose.png" alt="Jose Rodriguez" width="100" height="100">
                 </div>
                 <!--Contenido de la tarjetas-->
                 <div class="card-content">
                     <h3>Jose Rodriguez</h3>
-                    <span>Developer Frontend</span>
-                    <p>Jose es un desarrollador Frontend, especializado en la creación de interfaces de usuario atractivas y funcionales. Su enfoque está en la experiencia del usuario y la optimización del rendimiento en el navegador.</p>
+                    <span>DevTester</span>
+                    <p>Jose es un DevTester especializado en pruebas de software y aseguramiento de la calidad. Su enfoque está en la identificación de errores y la mejora de la experiencia del usuario.</p>
                     <div class="card-skills">
                         <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">CSS</span>
@@ -169,16 +179,81 @@
                     </div>
                 </div>
             </div>
+
+            <!--Tarjeta De Daniel Flores-->
+            <div class="cards-presentacion">
+                <div class="circulo">
+                    <img src="/Equipo/tania.jpg" alt="Daniel Flores" width="100" height="100">
+                </div>
+                <!--Contenido de la tarjetas-->
+                <div class="card-content">
+                    <h3>Daniel Flores</h3>
+                    <span>Ciberseguridad</span>
+                    <p>Daniel es un especialista en ciberseguridad, encargado de proteger los sistemas y datos de la organización contra amenazas y ataques informáticos.</p>
+                    <div class="card-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Seguridad Informática</span>
+                        <span class="skill-tag">Bases de Datos</span>
+                        <span class="skill-tag">Análisis de Datos</span>
+                    </div>
+                    <div class="contactos">
+                        <a class="contacto" href="https://github.com/danielflores">Github</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Tarjeta De Joshua Portal-->
+            <div class="cards-presentacion">
+                <div class="circulo">
+                    <img src="/Equipo/Joshua1.jpg" alt="Joshua Portal" width="100" height="100">
+                </div>
+                <!--Contenido de la tarjetas-->
+                <div class="card-content">
+                    <h3>Joshua Portal</h3>
+                    <span>Developer Frontend</span>
+                    <p>Joshua es un desarrollador frontend y gestionador de proyectos. Su enfoque está en la creación de interfaces de usuario atractivas y funcionales, además de coordinar equipos de desarrollo.</p>
+                    <div class="card-skills">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Project Management</span>
+                    </div>
+                    <div class="contactos">
+                        <a class="contacto" href="https://github.com/joshuaportal">Github</a>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
 
-    <!-- Botón de chat flotante -->
-    <div id="chat-button" class="chat-button hidden">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.60564 8.7 3.9C9.87812 3.30493 11.1801 2.99656 12.5 3H13C15.0843 3.11499 17.053 3.99476 18.5291 5.47086C20.0052 6.94696 20.885 8.91565 21 11V11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <!--Contenedor Quintario-->
+    <div id="contacto" class="container-quintario">
+        <div class="informacion-contacto">
+            <h2>¿Necesitas Desarrollar un Sistema?</h2>
+            <div class="contacto">
+                <span>¿Tienes una idea o proyecto en mente? Nuestro equipo está listo para escucharte y brindarte la mejor solución tecnológica. Completa el formulario o escríbenos, y juntos haremos realidad tu sistema a la medida, con innovación, seguridad y calidad garantizada. ¡Tu transformación digital comienza aquí!</span>
+                <br><span>En InnovaDevs, convertimos tus ideas en soluciones tecnológicas efectivas y seguras. Nuestro compromiso es acompañarte en cada etapa del desarrollo, brindando asesoría personalizada y soporte continuo para que tu proyecto alcance el éxito que esperas.</span>
+            </div>
+        </div>
+        <div class="formulario-contacto">
+            <form>
+                <h2>Contáctanos</h2>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                <div class="button-container">
+                <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
